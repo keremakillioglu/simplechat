@@ -16,8 +16,6 @@ It can be hosted via a Apache Server or `php -S` command
 * **vlucas/valitron:** Request Validations
   
 ## API Details
-
-### 1. Capabilities
 User can register and login with JWT mechanism.  
 After a successful login, a user can send messages to other users.  
 Message recipient can mark a message as read.
