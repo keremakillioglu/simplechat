@@ -4,6 +4,7 @@ A simple chat application backend developed with PHP & Slim 4 Framework.
 ## Installation and Setup
 Application can be set up with `composer update` and `composer migrate` commands.  
 Make configurations in the .env file.
+It can be hosted via a Apache Server or `php -S` command
 
 ## Dependencies
 * **slim/slim:** Framework
