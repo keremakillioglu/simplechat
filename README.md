@@ -37,12 +37,25 @@ No refresh tokens are generated with this implementation. So there is no need to
 ### 2. Authorization
 Only auth/login and auth/register endpoints are public.  
 In order to send and receive a message, user should login.  
-JWT Token should be added to the request header to be authorized. Example is as follows:
+JWT should be added to the request header to be authorized. Example is as follows:
 ```
-Authorization: Bearer JWTTOKEN
+Authorization: Bearer JWTSOMETOKEN
 ```
 
 ### 3. Project Structure
+<pre>
+simplechat/  
+├── config/  
+├── db/    
+├── src/  
+│   ├── Controller
+│   ├── Database/Migrations  
+│   ├── Http/  
+│   ├── Model/
+│   └── Service
+├── .env
+└── phinx.php
+</pre>
 
 #### 3.a Config
 This folder includes the configurations and files that are necessary to bootstrap the app.
@@ -52,35 +65,34 @@ Database and migration files are located in db folder.
 
 #### 3.c Application
 All application related files are located in src folder.
-* Controllers: Main tasks are handled in controllers
-* Models: Eloquent ORM Models are mapped through Model classes: User, Message, Record
-* Database: Migration template and stub is located here.
-* Http: Contains an Exception folder to handle exceptions.  
+* **Controllers:** Main tasks are handled in controllers
+* **Models:** Eloquent ORM Models are mapped through Model classes: User, Message, Record
+  * User model contains id, uuid, username and timestamps.  
+  * Message model contains id, sender_id, receiver_id, uuid and timestamps.  
+  * Message or User ID's are never compromised publicly. UUID's are displayed when needed.  
+  * e.g. Endpoint for retrieving message by ID: 
+    * `/messages/bb75bec7-7399-46c3-9c6c-0f6079474052`  
+* **Database:** Migration template and stub is located here.
+* **Http:** Contains an Exception folder to handle exceptions.  
   CustomResponse generates the same response for API Endpoints and Exceptions.
-* Token is generated under Service Folder  
+* Token is generated under **Service** Folder  
 
-#### 3.d Models
-User model contains id, uuid, username and timestamps.  
-Message model contains id, sender_id, receiver_id, uuid and timestamps.  
-Message or User ID's are never compromised publicly. Instead, UUID's are displayed when needed.
-(e.g. URL for retrieving message by ID `/messages/bb75bec7-7399-46c3-9c6c-0f6079474052`)
-
-#### 3.e Migrations
+#### 3.d Migrations
 Tables are created and updated with migrations, using Phinx.  
 Create migrations: `composer make-migration -- MigrationName`  
 Run migrations: `composer migrate`
 
-#### 3.f Exceptions and Logs
+#### 3.e Exceptions and Logs
 Exceptions are handled through a handler in Http/Exceptions. If API faces a problem, an APIException is thrown.
 Logs are stored in logs directory
 
-### Coding Style
+### 4. Coding Style
 PHP Coding Standards Fixer (PHP CS Fixer) tool is used to follow standards.  
 PSR1 was followed for naming conventions:
 * Class names are declared in StudlyCaps.
 * Method names are  declared in camelCase.
 
-#### Further Development
+#### 5. Further Development
 * Database validations can be reorganized. Ideally a validator can be made for each endpoint.   
   A Validator Interface can be created, and a concrete Validator can be created for each endpoint.
   Since this is a small project, it is not done that way.
