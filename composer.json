@@ -1,0 +1,28 @@
+{
+    "description": "Simple Chat Application API",
+    "keywords": ["chat", "api", "slim"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=7.4.0",
+        "slim/slim": "4.4.0",
+        "vlucas/phpdotenv": "^2.4",
+        "slim/psr7": "^0.3.0",
+        "php-di/php-di": "^6.0",
+        "php-di/slim-bridge": "^3.0.0",
+        "respect/validation": "^2.0",
+        "tuupola/slim-jwt-auth": "^3.5.0",
+        "firebase/php-jwt": "^5.2.0",
+        "illuminate/database": "^8.26",
+        "robmorgan/phinx": "^0.12.5",
+        "vlucas/valitron": "^v1.4.9",
+        "ramsey/uuid": "^4.1",
+        "illuminate/events": "^8.26",
+        "monolog/monolog": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
