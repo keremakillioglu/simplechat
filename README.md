@@ -86,3 +86,4 @@ PSR1 was followed for naming conventions:
   Since this is a small project, it is not done that way.
 * Unit tests can be added.
 * App route can be changed.
+* Swagger can be added.
